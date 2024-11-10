@@ -13,13 +13,25 @@
     <header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div class="container flex h-16 items-center">
             <!-- Mobile Menu Button -->
-            <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 md:hidden" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:Rlla:" data-state="closed">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu h-5 w-5">
-                    <line x1="4" x2="20" y1="12" y2="12"></line>
-                    <line x1="4" x2="20" y1="6" y2="6"></line>
-                    <line x1="4" x2="20" y1="18" y2="18"></line>
-                </svg>
-            </button>
+            <div class="relative">
+             
+              <!-- Menu Items -->
+              <div id="menu-items" class="hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
+                <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home</a>
+                <a href="shop.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Shop</a>
+                <a href="about.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">About</a>
+                <a href="cart.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cart</a>
+                <a href="contact.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact</a>
+              </div>
+              <script>
+                function toggleMenu() {
+  const menu = document.getElementById('menu-items');
+  menu.classList.toggle('hidden');
+}
+
+              </script>
+            </div>
+            
             
             <!-- Logo and Navigation -->
             <div class="flex w-full items-center gap-4 md:gap-6">
@@ -66,13 +78,6 @@
                             <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
                         </svg>
                     </button>
-
-                    <button class="icon-button" aria-label="Theme Toggle">
-                      <!-- Theme toggle icon SVG -->
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1M4.93 4.93l.7.7m12.74 12.74.7.7M3 12h1m16 0h1M4.93 19.07l.7-.7m12.74-12.74.7-.7M12 6a6 6 0 100 12 6 6 0 000-12z" />
-                      </svg>
-                  </button>
                 </div>
         
     </header>
@@ -147,15 +152,16 @@
               cursor: pointer;
             }
         
-            .gallery-container {
-              display: none;
+            .galleryContainer {
+              display: flex;
               margin-top: 20px;
             }
         
             .gallery {
-              display: flex;
+              display: grid;
+              align-items: center;
               flex-wrap: wrap;
-              gap: 20px;
+              gap: 30px;
             }
         
             .imageCard {
@@ -169,7 +175,7 @@
             }
         
             .imageCard img {
-              max-width: 100%;
+              max-width: 200%;
               height: auto;
               border-radius: 4px;
             }
