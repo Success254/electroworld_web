@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - ElectroWorld</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <div class="container flex h-16 items-center">
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuButton">☰</button>
+      <div id="mobileMenu" class="hidden">
+          <!-- Mobile Menu Links -->
+          <a href="#">Home</a>
+          <a href="#">Shop</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+      </div>
+      <script>
+        // Mobile Menu Toggle Functionality
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+    
+        mobileMenuButton.addEventListener('click', () => {
+            // Toggle visibility of the mobile menu
+            mobileMenu.classList.toggle('show');
+        });
+    </script>
+           
+      <!-- Logo -->
+      <a href="index.html" class="block">
+        <h1 class="text-xl font-bold text-white">STORE</h1>
+      </a>
+  
+      <!-- Navigation (hidden on small screens) -->
+      <nav class="hidden md:flex gap-6">
+        <a href="index.html" class="text-sm font-medium text-white hover:text-yellow-400">Home</a>
+        <a href="shop.html" class="text-sm font-medium text-white hover:text-yellow-400">Shop</a>
+        <a href="about.html" class="text-sm font-medium text-white hover:text-yellow-400">About</a>
+        <a href="cart.html" class="text-sm font-medium text-white hover:text-yellow-400">Cart</a>
+        <a href="contact.html" class="text-sm font-medium text-white hover:text-yellow-400">Contact Us</a>
+      </nav>
+    </div>
+  
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden absolute top-16 left-0 w-full bg-background shadow-lg z-40">
+        <nav class="flex flex-col gap-4 p-4">
+          <a href="index.html" class="text-sm font-medium text-white hover:text-yellow-400">Home</a>
+          <a href="shop.html" class="text-sm font-medium text-white hover:text-yellow-400">Shop</a>
+          <a href="about.html" class="text-sm font-medium text-white hover:text-yellow-400">About</a>
+          <a href="cart.html" class="text-sm font-medium text-white hover:text-yellow-400">Cart</a>
+          <a href="contact.html" class="text-sm font-medium text-white hover:text-yellow-400">Contact Us</a>
+        </nav>
+      </div>
+    
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const mobileMenuButton = document.getElementById('mobileMenuButton');
+          const mobileMenu = document.getElementById('mobileMenu');
+          const menuOverlay = document.createElement('div');
+    
+          menuOverlay.id = 'menuOverlay';
+          menuOverlay.style.position = 'fixed';
+          menuOverlay.style.top = 0;
+          menuOverlay.style.left = 0;
+          menuOverlay.style.width = '100%';
+          menuOverlay.style.height = '100%';
+          menuOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+          menuOverlay.style.zIndex = 30;
+          menuOverlay.style.display = 'none';
+          document.body.appendChild(menuOverlay);
+    
+          mobileMenuButton.addEventListener('click', () => {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            menuOverlay.style.display = isExpanded ? 'none' : 'block';
+          });
+    
+          menuOverlay.addEventListener('click', () => {
+            mobileMenuButton.setAttribute('aria-expanded', false);
+            mobileMenu.classList.add('hidden');
+            menuOverlay.style.display = 'none';
+          });
+    
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+              mobileMenuButton.setAttribute('aria-expanded', false);
+              mobileMenu.classList.add('hidden');
+              menuOverlay.style.display = 'none';
+            }
+          });
+        });
+      </script>
+   
+  
+                <!-- Search Bar and Icons -->
+                <div class="flex flex-1 items-center gap-4">
+                    <!-- Search Form -->
+                    <form class="hidden md:flex-1 md:flex max-w-sm">
+                        <div class="relative w-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.3-4.3"></path>
+                            </svg>
+                            <input type="search" class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 pl-8" placeholder="Search products...">
+                        </div>
+                    </form>
+                </div>
+                
+    <!-- User Icon Button -->
+<button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-12 w-12 bg-gray-800 text-white hover:bg-gray-700">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user h-6 w-6">
+        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+    </svg>
+</button>
+
+<!-- Cart Icon Button -->
+<button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-12 w-12 bg-gray-800 text-white hover:bg-gray-700">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart h-6 w-6">
+        <circle cx="8" cy="21" r="1"></circle>
+        <circle cx="19" cy="21" r="1"></circle>
+        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+    </svg>
+</button>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="product-listing">
+        <h2>Our Products</h2>
+        
+        <div class="product-item">
+            <img src="images/phone1.jpeg" alt="Product 1">
+            <h3>Smartphone</h3>
+            <p>$199.00</p>
+            <!--a href="product-detail.html" class="btn">View Details</a-->
+        </div>
+        <div class="product-item">
+            <img src="images/phone1.jpeg" alt="Product 1">
+            <h3>Smartphone</h3>
+            <p>$199.00</p>
+            <p>Vision Plus VP2110SB - 2.1CH Soundbar With Bluetooth - Black (2YRs WRTY) Brand: Vision Plus | Similar products from Vision Plus KSh 6,499'</p>
+            <!--a href="product-detail.html" class="btn">View Details</a-->
+        </div>
+        <div class="product-item">
+            <img src="images/phone2.jpeg" alt="Product 1">
+            <h3>Smartphone</h3>
+            <p>$405.99</p>
+            
+            <!--a href="product-detail.html" class="btn">View Details</a-->
+        </div>
+        
+        <div class="product-item">
+            <img src="images/phone1.jpeg" alt="Product 1">
+            <h3>Smartphone</h3>
+            <p>$400.99</p>
+           <!--a href="product-detail.html" class="btn">View Details</a-->
+        </div>
+        
+        <div class="product-item">
+            <img src="images/tv1.jpeg" alt="Product 1">
+            <h3>TV Set</h3>
+            <p>$350.99</p>
+           <!--a href="product-detail.html" class="btn">View Details</a-->
+        </div>
+        
+        <div class="product-item">
+            <img src="images/tv2.jpeg" alt="Product 1">
+            <h3>TV Set</h3>
+            <p>$300.99</p>
+            <!--a href="product-detail.html" class="btn">View Details</a-->
+        </div>
+        
+        <div class="product-item">
+            <img src="images/tv1.jpeg" alt="Product 1">
+            <h3>TV Set</h3>
+            <p>$299.99</p>
+            <!--a href="product-detail.html" class="btn">View Details</a-->
+        </div>
+        
+        <div class="product-item">
+            <img src="images/laptop1.jpeg" alt="Product 1">
+            <h3>Laptop</h3>
+            <p>$459.99</p>
+            <!--a href="product-detail.html" class="btn">View Details</a-->
+        </div>
+        
+        <div class="product-item">
+            <img src="images/laptop1.jpeg" alt="Product 1">
+            <h3>Laptop</h3>
+            <p>$470.99</p>
+            <!--a href="product-detail.html" class="btn">View Details</a-->
+        </div>
+        
+        <div class="product-item">
+            <img src="images/laptop2.jpeg" alt="Product 1">
+            <h3>Laptop</h3>
+            <p>$499.99</p>
+            <!--a href="product-detail.html" class="btn">View Details</a-->
+        </div>
+        <div class="product-item">
+            <img src="new1.jpeg" alt="Product 1">
+            <h3>Laptop</h3>
+            <p>$470.99</p>
+            <!--a href="product-detail.html" class="btn">View Details</a-->
+        </div>
+        <div class="product-item">
+            <img src="new2.jpeg" alt="Product 1">
+            <h3>Laptop</h3>
+            <p>$470.99</p>
+            <!--a href="product-detail.html" class="btn">View Details</a-->
+        </div>
+    </section>
+    
+        <!-- Add more product items similarly -->
+    
+
+    <footer class="footer">
+        
+        <p>&copy; 2024 ElectroWorld. All Rights Reserved.</p>
+        <div>
+            <a href="#"><i class="fab fa-facebook"></i>facecook</a>
+            <a href="#"><i class="fab fa-twitter"></i>X</a>
+            <a href="#"><i class="fab fa-instagram"></i>instagram</a>
+        </div>
+    </footer>
+</body>
+</html>
